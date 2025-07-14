@@ -1,0 +1,28 @@
+/* src/components/CategorySidebar.css */
+.category-sidebar ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.category-sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.category-sidebar a {
+  color: #333;
+  text-decoration: none;
+}
+
+.category-sidebar a:hover {
+  text-decoration: underline;
+  color: #0d6efd;
+}
+
+.category-sidebar button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #0d6efd;
+}

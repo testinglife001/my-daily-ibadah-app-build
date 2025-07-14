@@ -1,0 +1,23 @@
+.post-card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  height: 160px;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.post-card h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.post-card p {
+  font-size: 0.875rem;
+  line-height: 1.3;
+}

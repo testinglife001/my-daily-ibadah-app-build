@@ -1,0 +1,75 @@
+/* Sidebar */
+.todosapp-sidebar {
+  background-color: #02090f;
+  /* min-height: 200vh; */
+  padding: 1rem;
+  border-right: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.todosapp-sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  color: #0c0808;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.todosapp-sidebar .nav-link:hover {
+  background-color: #091018;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.todosapp-sidebar .nav-link.active {
+  background-color: gray;
+  color: rgb(239, 236, 236);
+  border-radius: 0.5rem;
+}
+
+/* Divider */
+.sidebar-divider {
+  margin: 1rem 0;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Main Content */
+.todo-list-container {
+  padding: 1rem;
+}
+
+.todo-item {
+  transition: transform 0.2s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Drag and drop cursor */
+.todo-item[draggable="true"] {
+  cursor: grab;
+}
+
+/* Modal */
+.modal-header {
+  background-color: #1266e5;
+  color: rgb(14, 9, 9);
+}
+
+.scrollbar {
+  overflow-y: auto;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}

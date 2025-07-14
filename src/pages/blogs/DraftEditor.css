@@ -1,0 +1,44 @@
+.editor-container {
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  padding: 1rem;
+  min-height: 300px;
+}
+/*
+.editor-container {
+  font-family: 'Noto Sans Bengali', 'SolaimanLipi', 'Hind Siliguri', 'Segoe UI', sans-serif;
+  direction: ltr;  you can change to 'auto' if needed 
+  font-size: 16px;
+}
+.editor-container {
+  min-height: 300px;
+  font-family: 'Noto Sans Bengali', 'Hind Siliguri', 'SolaimanLipi', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  direction: ltr;
+  line-height: 1.6;
+}
+*/
+
+.editor-wrapper {
+  min-height: 250px;
+}
+
+.editor-main {
+  min-height: 300px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  background: #fdfdfd;
+  overflow-y: auto;
+  font-family: 'Noto Sans Bengali', 'Hind Siliguri', 'SolaimanLipi', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  direction: ltr;
+  line-height: 1.6;
+}
+
+.editor-toolbar {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}

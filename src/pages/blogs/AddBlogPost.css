@@ -1,0 +1,63 @@
+/* AddBlogPost.css */
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+form input,
+form select,
+form textarea,
+.form-control,
+.form-select {
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+
+form .form-control:focus,
+form .form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+button {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+}
+
+img.preview {
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#editorjs-preview,
+#editorjs-render {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  margin-top: 1rem;
+}
+
+.tags-input {
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+  padding: 0.5rem;
+}
+
+.preview-block {
+  border: 1px dashed #bbb;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+}

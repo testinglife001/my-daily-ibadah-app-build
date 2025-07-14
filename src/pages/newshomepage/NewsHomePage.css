@@ -1,0 +1,31 @@
+.newshomepage {
+  background-color: #f9f9f9;
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+.newspaper-font {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.section-header {
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.newspaper-section {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  column-count: 2;
+  column-gap: 40px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}

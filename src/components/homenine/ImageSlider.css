@@ -1,0 +1,25 @@
+/* ImageSlider.css */
+.slider-thumbnails {
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.thumbnail {
+  height: 100px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.active-thumb {
+  border: 3px solid #007bff;
+}
+
+.grid-thumb {
+  height: 150px;
+  width: 150px;
+}

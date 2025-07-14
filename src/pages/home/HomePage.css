@@ -1,0 +1,43 @@
+/* HomePage.css */
+
+/* Entire homepage layout */
+.homepage {
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Bootstrap light */
+  margin-top: 10px;
+}
+
+/* Main content area */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+/* Sidebar on the right */
+.right-sidebar {
+  width: 220px;
+  background-color:gray; /* Bootstrap dark */
+  color: #ffffff;
+  padding: 1.5rem 1rem;
+  margin: 5px;
+  height: fit-content;
+}
+
+/* Sidebar heading */
+.right-sidebar h5 {
+  margin-bottom: 1.25rem;
+}
+
+/* Sidebar nav links */
+.right-sidebar .nav-link {
+  color: #ffffff;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.right-sidebar .nav-link:hover {
+  background-color: #343a40;
+  color: #ffc107;
+  border-radius: 4px;
+}

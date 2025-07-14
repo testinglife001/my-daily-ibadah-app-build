@@ -1,0 +1,61 @@
+/* src/components/Sidebar.css */
+
+/* src/components/Sidebar.css */
+
+.sidebar-sticky {
+  position: sticky;
+  top: 80px;
+  max-height: calc(150vh - 120px); /* sticky top + some margin */
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  border-left: 2px solid #dee2e6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+/* Optional: prettier scrollbar */
+.sidebar-sticky::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-sticky::-webkit-scrollbar-thumb {
+  background-color: #adb5bd;
+  border-radius: 4px;
+}
+.sidebar-sticky::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.sidebar-box {
+  background: #ffffff;
+  border: 1px solid #e3e3e3;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-text {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+.sidebar-list a {
+  color: #495057;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.sidebar-list a:hover {
+  color: #0d6efd;
+  text-decoration: underline;
+}

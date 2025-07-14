@@ -1,0 +1,33 @@
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.small-thumb {
+  height: 80px;
+  object-fit: cover;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 40%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.custom-arrow.prev {
+  left: 10px;
+}
+.custom-arrow.next {
+  right: 10px;
+}
+
+.thumb-slider .small-thumb {
+  height: 80px;
+  object-fit: cover;
+  margin: auto;
+}

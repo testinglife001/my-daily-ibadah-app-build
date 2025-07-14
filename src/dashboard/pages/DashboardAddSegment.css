@@ -1,0 +1,12 @@
+.bangla-font {
+  font-family: 'Noto Sans Bengali', SolaimanLipi, sans-serif;
+  font-size: 1rem;
+}
+
+.editor-content {
+  border: 1px solid #ccc;
+  min-height: 200px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #fff;
+}

@@ -1,0 +1,209 @@
+.card {
+  --bs-card-padding-y: 1.5rem;
+  --bs-card-padding-x: 1.5rem;
+  --bs-card-radius: 0.75rem;
+  --bs-card-border-color: #e0e0e8;
+  --bs-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  --bs-card-bg: #fff;
+  --bs-card-color: #1f1f2e;
+
+  background-color: var(--bs-card-bg);
+  color: var(--bs-card-color);
+  border: 1px solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-radius);
+  box-shadow: var(--bs-card-shadow);
+  padding: var(--bs-card-padding-y) var(--bs-card-padding-x);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  background-color: #f5f6fa;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e6e6f0;
+  font-weight: 600;
+  color: #33334d;
+  border-top-left-radius: var(--bs-card-radius);
+  border-top-right-radius: var(--bs-card-radius);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a2f;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666680;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #4d4d66;
+  line-height: 1.6;
+}
+
+.card-footer {
+  background-color: #f9f9fb;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e6e6f0;
+  color: #595970;
+  font-size: 0.9rem;
+  border-bottom-left-radius: var(--bs-card-radius);
+  border-bottom-right-radius: var(--bs-card-radius);
+}
+
+
+/* custom part 2 */
+/* ===== Card Styling ===== */
+.custom-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  overflow: hidden;
+}
+
+/* ===== Card Header ===== */
+.custom-card .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem 1.25rem;
+}
+
+.custom-card .card-header h4 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* ===== Buttons ===== */
+.btn-outline-light {
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  color: #343a40;
+}
+
+.btn-outline-light:hover {
+  background-color: #f1f3f5;
+  color: #212529;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* ===== Dropzone/File Input ===== */
+.dropzone {
+  padding: 2rem;
+  border: 2px dashed #ced4da;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+/* ===== Form Labels & Help Text ===== */
+form label {
+  font-weight: 500;
+}
+
+form small,
+form .form-text {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* ===== Input Group ===== */
+.input-group-text {
+  background-color: #e9ecef;
+  font-weight: 500;
+}
+
+/* ===== Editor Preview Styling ===== */
+.editor-box {
+  background-color: #f1f3f5;
+  border: 1px solid #ced4da;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== ListGroup Items ===== */
+.list-group-item {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-group-item h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* ===== Post Info Avatar ===== */
+.avatar-sm {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.badge-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ===== Actions Icons ===== */
+.fe {
+  font-size: 1.2rem;
+}
+
+.fe-trash {
+  color: #dc3545;
+}
+
+.fe-copy,
+.fe-x-circle {
+  color: #6c757d;
+}
+
+/* ===== Badge Styling ===== */
+.badge.bg-success {
+  background-color: #198754 !important;
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+}
+
+/* ===== Responsive Fixes ===== */
+@media (max-width: 991.98px) {
+  .custom-card .card-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .list-group-item {
+    padding: 0.75rem 1rem;
+  }
+}
+
+

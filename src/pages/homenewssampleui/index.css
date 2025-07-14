@@ -1,0 +1,23 @@
+.newssampleui {
+  font-family: 'Georgia', serif;
+  background: #fdfdfd;
+  background-color: #fcfcfa;
+  font-size: 17px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+
+h4, h5 {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}

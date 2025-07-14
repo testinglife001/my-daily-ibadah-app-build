@@ -1,0 +1,30 @@
+.homepage {
+  display: flex;
+  flex-direction: row; /* Main content left, sidebar right */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  margin-top: 40px; /* pushes below header */
+}
+
+/* Main content fills most of the space */
+.main-content {
+  flex: 3;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar on the right */
+.sidebar {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 20px;
+ /* background-color: #fdfbfb; */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}

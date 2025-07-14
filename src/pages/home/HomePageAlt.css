@@ -1,0 +1,23 @@
+/* src/styles/HomePageAlt.css */
+/* Entire homepage layout */
+.homepage {
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Bootstrap light */
+  margin-top: 10px;
+}
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+.blog-post {
+  margin-bottom: 3rem;
+}
+
+.blog-post-meta {
+  margin-bottom: 1rem;
+  color: #727272;
+}
+
+.bg-body-tertiary {
+  background-color: #f8f9fa !important;
+}

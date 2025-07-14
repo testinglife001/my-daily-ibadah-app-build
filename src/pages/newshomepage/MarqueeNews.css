@@ -1,0 +1,6 @@
+/* MarqueeNews.css */
+.marquee-container marquee {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f8f9fa;
+}

@@ -1,0 +1,42 @@
+/* components/slider.css */
+
+.keen-slider {
+  border-radius: 10px;
+}
+
+.keen-slider__slide {
+  background: #f9f9f9;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.keen-slider__slide img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.keen-slider__slide h5 {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.arrow {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,39 @@
+/* ImageSlider.css */
+.slider-thumbnails {
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.thumbnail {
+  height: 100px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.active-thumb {
+  border: 3px solid #007bff;
+}
+
+.grid-thumb {
+  height: 150px;
+  width: 150px;
+}
+
+.preview-image {
+  border: 5px solid #343a40;
+}
+
+.image-caption {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.image-modal .modal-content {
+  background: rgba(0, 0, 0, 0.85);
+  border: none;
+}

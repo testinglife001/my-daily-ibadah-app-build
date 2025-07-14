@@ -1,0 +1,11 @@
+/* index.css or global styles */
+.swiper {
+  padding: 10px 0;
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

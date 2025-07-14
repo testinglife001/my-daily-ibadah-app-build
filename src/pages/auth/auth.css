@@ -1,0 +1,169 @@
+/* General Layout */
+html, body {
+  height: 100%;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container */
+section.container {
+  max-width: 100%;
+  padding: 2rem;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 1rem;
+  border: none;
+  background-color: #fff;
+}
+
+/* Card Body Spacing */
+.card-body {
+  padding: 2rem;
+}
+
+/* Logo */
+.card-body img {
+  max-height: 40px;
+}
+
+/* Form Headings */
+.card-body h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.card-body span a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.card-body span a:hover {
+  text-decoration: underline;
+}
+
+/* Form Elements */
+.form-control {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.invalid-feedback {
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+/* Remember Me Checkbox */
+.form-check-input {
+  border-radius: 0.25rem;
+}
+
+.form-check-label {
+  font-size: 0.95rem;
+}
+
+/* Sign In Button */
+.btn-primary {
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Divider */
+hr.my-4 {
+  border-top: 1px solid #dee2e6;
+}
+
+/* Social Buttons */
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 0.25rem;
+  border-radius: 50%;
+  border: 1px solid #dee2e6;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-social svg {
+  fill: currentColor;
+}
+
+.btn-social:hover {
+  background-color: #e9ecef;
+}
+
+/* Social Colors */
+.btn-facebook {
+  color: #3b5998;
+}
+
+.btn-twitter {
+  color: #1da1f2;
+}
+
+.btn-linkedin {
+  color: #0077b5;
+}
+
+.btn-github {
+  color: #333;
+}
+
+/* Theme Toggle Button */
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.dropdown-menu {
+  border-radius: 0.5rem;
+  min-width: 8rem;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item i {
+  font-size: 1.1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-body h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn-social {
+    width: 40px;
+    height: 40px;
+  }
+}

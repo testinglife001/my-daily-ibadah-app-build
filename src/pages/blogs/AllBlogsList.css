@@ -1,0 +1,68 @@
+/* AllBlogs.css */
+
+.blog-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+}
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.blog-image {
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.blog-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.blog-meta {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+.blog-tags .badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+}
+
+.list-view .blog-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.list-view .blog-card .blog-title {
+  margin-bottom: 0;
+}
+
+.list-view .blog-card .blog-meta {
+  margin: 0.3rem 0;
+}
+
+.add-blog-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 24px;
+  background: #007bff;
+  color: white;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: background 0.2s;
+}
+.add-blog-button:hover {
+  background: #0056b3;
+}

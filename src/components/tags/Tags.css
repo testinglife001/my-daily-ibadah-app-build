@@ -1,0 +1,21 @@
+.tags > a {
+    text-decoration: none;
+}
+
+.tag {
+    background: #f1f1f1;
+    padding: 10px 15px;
+    color: #222;
+    transition: all 0.5s; /* Converted @include transition */
+    margin-right: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.tag:hover,
+.tag:focus {
+    background: #8abaf4; /* Replace $yellow with the actual color */
+    color: #fff;
+    text-decoration: none;
+}
