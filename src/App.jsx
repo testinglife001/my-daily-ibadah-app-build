@@ -188,6 +188,8 @@ function App() {
         pauseOnHover 
       />*/}
 
+      <h1>TEST CHANGE</h1>
+
       {
         !shouldHideNavbar && 
         <HomeNavbar
