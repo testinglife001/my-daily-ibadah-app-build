@@ -1,0 +1,19 @@
+.home-main-shell {
+  max-width: 1440px;
+}
+
+.content-block {
+  margin-bottom: 1.25rem;
+  border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+  .home-main-shell {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .content-block {
+    margin-bottom: 0.9rem;
+  }
+}

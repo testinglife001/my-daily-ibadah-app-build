@@ -125,9 +125,6 @@ import PostCreator from './dashboard/components/PostCreator';
 import DashboardAiPost from './dashboard/components/DashboardAiPost';
 import BannerEditor from './dashboard/components/BannerEditor';
 import NoteDetails from './pages/blogs/NoteDetails';
-import ProductivityPlaybook from './pages/guide/ProductivityPlaybook';
-import AppDemoTour from './pages/guide/AppDemoTour';
-import FloatingGuideButton from './components/common/FloatingGuideButton';
 
 
 
@@ -203,8 +200,6 @@ function App() {
               role={role}
           />
       }
-
-      <FloatingGuideButton />
       <Routes>
         {/* Authentication */}
         <Route path='/sign-in' element={<SignInPage setActive={setActive} setUser={setUser} />} />
@@ -234,8 +229,6 @@ function App() {
 
         <Route path='/main-app' element={<MainApp />} />
         <Route path='/about-us' element={<About />} />
-        <Route path='/playbook' element={<ProductivityPlaybook />} />
-        <Route path='/app-tour' element={<AppDemoTour />} />
         
         <Route path="/posts" element={<PostsPage />} />
         <Route path="/allposts" element={<AllPostsPage />} />

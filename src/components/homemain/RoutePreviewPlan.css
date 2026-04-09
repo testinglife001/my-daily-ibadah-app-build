@@ -1,0 +1,83 @@
+.route-preview-wrapper {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  background: linear-gradient(160deg, #f8fafc 0%, #eef2ff 100%);
+  border: 1px solid #dbeafe;
+}
+
+.route-preview-heading h2 {
+  margin: 0.2rem 0 0.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.route-preview-heading p {
+  color: #334155;
+}
+
+.route-preview-kicker {
+  margin: 0;
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+.route-preview-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.route-preview-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 0.9rem;
+}
+
+.route-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: #0369a1;
+  background: #e0f2fe;
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+}
+
+.route-path {
+  margin-bottom: 0.4rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #0f172a;
+}
+
+.route-preview-link {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.route-preview-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .route-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .route-preview-wrapper {
+    padding: 0.9rem;
+  }
+
+  .route-preview-grid {
+    grid-template-columns: 1fr;
+  }
+}

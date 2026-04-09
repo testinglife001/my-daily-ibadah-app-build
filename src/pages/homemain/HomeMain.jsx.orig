@@ -28,8 +28,6 @@ import NavbarHome from "../../components/homemain/NavbarHome";
 import BlogsList from "../../components/homemain/BlogsList";
 import { toast } from "react-toastify";
 import HeroVideoBackground from "../../components/homemain/HeroVideoBackground";
-import RoutePreviewPlan from "../../components/homemain/RoutePreviewPlan";
-import "./HomeMain.css";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -280,20 +278,10 @@ export default function HomeMain({ setActive, user, active, handleLogout, role }
       {/*<HeroSection />*/}
       <HeroVideoBackground />
 
-      <div className="container-fluid my-4 home-main-shell">
-        <RoutePreviewPlan />
-
-        <section className="content-block">
-          <FeaturedPostSlider />
-        </section>
-
-        <section className="content-block">
-          <TwoSidePosts />
-        </section>
-
-        <section className="content-block">
-          <TrendingSlider blogs={trendBlogs} />
-        </section>
+      <div className="container-fluid my-4">
+        <FeaturedPostSlider />
+        <TwoSidePosts />
+        <TrendingSlider blogs={trendBlogs} />
 
         <div className="row mt-4" style={{ minHeight: "180vh" }}>
           <div>

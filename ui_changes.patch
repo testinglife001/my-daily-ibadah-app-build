@@ -1,0 +1,1205 @@
+diff --git a/src/App.jsx b/src/App.jsx
+index 6ca6ce1..632869e 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -125,6 +125,9 @@ import PostCreator from './dashboard/components/PostCreator';
+ import DashboardAiPost from './dashboard/components/DashboardAiPost';
+ import BannerEditor from './dashboard/components/BannerEditor';
+ import NoteDetails from './pages/blogs/NoteDetails';
++import ProductivityPlaybook from './pages/guide/ProductivityPlaybook';
++import AppDemoTour from './pages/guide/AppDemoTour';
++import FloatingGuideButton from './components/common/FloatingGuideButton';
+ 
+ 
+ 
+@@ -198,6 +201,8 @@ function App() {
+               role={role}
+           />
+       }
++
++      <FloatingGuideButton />
+       <Routes>
+         {/* Authentication */}
+         <Route path='/sign-in' element={<SignInPage setActive={setActive} setUser={setUser} />} />
+@@ -227,6 +232,8 @@ function App() {
+ 
+         <Route path='/main-app' element={<MainApp />} />
+         <Route path='/about-us' element={<About />} />
++        <Route path='/playbook' element={<ProductivityPlaybook />} />
++        <Route path='/app-tour' element={<AppDemoTour />} />
+         
+         <Route path="/posts" element={<PostsPage />} />
+         <Route path="/allposts" element={<AllPostsPage />} />
+diff --git a/src/components/common/FloatingGuideButton.jsx b/src/components/common/FloatingGuideButton.jsx
+new file mode 100644
+index 0000000..c5218f2
+--- /dev/null
++++ b/src/components/common/FloatingGuideButton.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { Link } from "react-router-dom";
++
++export default function FloatingGuideButton() {
++  return (
++    <Link
++      to="/app-tour"
++      className="floating-guide-btn"
++      aria-label="Open app tour"
++      title="Open App Tour"
++    >
++      App Tour
++    </Link>
++  );
++}
+diff --git a/src/components/homemain/HeroVideoBackground.css b/src/components/homemain/HeroVideoBackground.css
+index 4f870ed..5fcd0c7 100644
+--- a/src/components/homemain/HeroVideoBackground.css
++++ b/src/components/homemain/HeroVideoBackground.css
+@@ -1,67 +1,141 @@
+ .hero-section-container {
+   position: relative;
+-  height: 100vh;
++  min-height: 88vh;
+   overflow: hidden;
++  border-radius: 0 0 1.5rem 1.5rem;
+ }
+ 
+ .background-video {
+   position: absolute;
+-  top: 50%;
+-  left: 50%;
+-  min-width: 100%;
+-  min-height: 100%;
+-  width: auto;
+-  height: auto;
+-  z-index: 0;
+-  transform: translate(-50%, -50%);
++  inset: 0;
++  width: 100%;
++  height: 100%;
+   object-fit: cover;
+-  filter: brightness(0.8) drop-shadow(0 0 20px #77f);
++  z-index: 0;
++  filter: brightness(0.72) saturate(1.1);
+ }
+ 
+ .overlay-dark-sides {
+   position: absolute;
+   inset: 0;
+-  box-shadow:
+-    inset 0 0 150px 80px rgba(0,0,0,0.8),
+-    inset 150px 0 100px -50px rgba(0,0,0,0.7),
+-    inset -150px 0 100px -50px rgba(0,0,0,0.7);
++  background:
++    radial-gradient(circle at center, rgba(15, 23, 42, 0.3), rgba(2, 6, 23, 0.82)),
++    linear-gradient(to right, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.7));
+   z-index: 1;
+ }
+ 
+ .hero-centered-content {
+   position: relative;
+   z-index: 2;
+-  height: 100%;
++  min-height: 88vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
++  padding: 1.25rem;
+ }
+ 
+ .hero-content-box {
+-  background-color: rgba(0,0,0,0.5);
+-  padding: 1.5rem 2rem;
+-  border-radius: 0.5rem;
+-  box-shadow: 0 0 20px rgba(255,255,255,0.1);
++  width: min(760px, 100%);
++  background: rgba(2, 6, 23, 0.56);
++  border: 1px solid rgba(255, 255, 255, 0.2);
++  backdrop-filter: blur(8px);
++  padding: 1.25rem 1.5rem;
++  border-radius: 1rem;
++  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
++}
++
++.hero-kicker {
++  display: inline-block;
++  padding: 0.3rem 0.7rem;
++  border-radius: 999px;
++  font-size: 0.8rem;
++  letter-spacing: 0.03em;
++  background: rgba(37, 99, 235, 0.3);
++  border: 1px solid rgba(147, 197, 253, 0.6);
++  margin-bottom: 0.7rem;
++}
++
++.hero-subtitle {
++  color: rgba(255, 255, 255, 0.85);
++  font-size: 0.95rem;
+ }
+ 
+ .hero-controls {
+   position: absolute;
+-  bottom: 20px;
+-  right: 20px;
++  right: 1rem;
++  bottom: 1rem;
+   z-index: 3;
+   display: flex;
+-  gap: 1rem;
++  align-items: center;
++  gap: 0.7rem;
++  background: rgba(2, 6, 23, 0.55);
++  border: 1px solid rgba(255, 255, 255, 0.25);
++  border-radius: 999px;
++  padding: 0.45rem 0.6rem;
+ }
+ 
+ .control-btn {
+-  background: rgba(0,0,0,0.6);
++  background: rgba(255, 255, 255, 0.15);
+   color: #fff;
+   border: none;
+-  padding: 0.5rem 0.7rem;
+-  font-size: 1.25rem;
+-  border-radius: 50%;
++  width: 36px;
++  height: 36px;
++  display: grid;
++  place-items: center;
++  font-size: 1rem;
++  border-radius: 999px;
+   cursor: pointer;
+ }
++
+ .control-btn:hover {
+-  background: rgba(255, 255, 255, 0.2);
++  background: rgba(255, 255, 255, 0.3);
++}
++
++.volume-slider {
++  width: 90px;
++}
++
++.hero-pagination {
++  position: absolute;
++  left: 1rem;
++  bottom: 1rem;
++  z-index: 3;
++  display: flex;
++  gap: 0.45rem;
++}
++
++.hero-dot {
++  width: 10px;
++  height: 10px;
++  border-radius: 999px;
++  border: 1px solid rgba(255, 255, 255, 0.7);
++  background: rgba(255, 255, 255, 0.35);
++}
++
++.hero-dot.active {
++  width: 22px;
++  background: #60a5fa;
++  border-color: #60a5fa;
++}
++
++@media (max-width: 768px) {
++  .hero-section-container,
++  .hero-centered-content {
++    min-height: 68vh;
++  }
++
++  .hero-content-box {
++    padding: 1rem;
++    border-radius: 0.85rem;
++  }
++
++  .hero-controls {
++    right: 0.75rem;
++    bottom: 0.75rem;
++    gap: 0.4rem;
++  }
++
++  .volume-slider {
++    width: 72px;
++  }
+ }
+diff --git a/src/components/homemain/HeroVideoBackground.jsx b/src/components/homemain/HeroVideoBackground.jsx
+index e1bc901..be1ec64 100644
+--- a/src/components/homemain/HeroVideoBackground.jsx
++++ b/src/components/homemain/HeroVideoBackground.jsx
+@@ -1,11 +1,18 @@
+-// src/components/HeroSection.jsx
+-import React, { useState, useEffect, useRef } from "react";
+-import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
++import React, { useEffect, useMemo, useRef, useState } from "react";
++import { FaPause, FaPlay, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+ import "./HeroVideoBackground.css";
+ 
+-const videos = [
+-  "/videos/maher-zain-rahmatun.mp4",
+-  "/videos/give-thanks-mj.mp4",
++const playlist = [
++  {
++    src: "/videos/maher-zain-rahmatun.mp4",
++    title: "Rahmatun Lil'Alameen",
++    subtitle: "Start your day with reflection and gratitude",
++  },
++  {
++    src: "/videos/give-thanks-mj.mp4",
++    title: "Give Thanks",
++    subtitle: "Positive reminders and meaningful stories",
++  },
+ ];
+ 
+ export default function HeroVideoBackground() {
+@@ -13,102 +20,128 @@ export default function HeroVideoBackground() {
+   const [currentVideo, setCurrentVideo] = useState(0);
+   const [isPlaying, setIsPlaying] = useState(true);
+   const [isMuted, setIsMuted] = useState(true);
+-  const [volume, setVolume] = useState(5); // 0–100%
++  const [volume, setVolume] = useState(0);
+ 
+-  useEffect(() => {
++  const activeVideo = useMemo(() => playlist[currentVideo], [currentVideo]);
++
++  const ensurePlayback = async () => {
+     const video = videoRef.current;
+     if (!video) return;
+ 
+-    video.src = videos[currentVideo];
+     video.muted = isMuted;
+     video.volume = volume / 100;
+ 
+-    if (isPlaying) {
+-      video
+-        .play()
+-        .then(() => {})
+-        .catch((err) => console.warn("Autoplay blocked", err));
++    if (!isPlaying) {
++      video.pause();
++      return;
+     }
+ 
+-  }, [currentVideo, isPlaying, isMuted]);
+-
+-  useEffect(() => {
+-    if (videoRef.current) {
+-      videoRef.current.volume = volume / 100;
+-      if (volume === 0) {
+-        videoRef.current.muted = true;
+-        setIsMuted(true);
+-      } else {
+-        videoRef.current.muted = false;
+-        setIsMuted(false);
++    try {
++      await video.play();
++    } catch (err) {
++      // Browser autoplay policy can block when sound is enabled.
++      video.muted = true;
++      setIsMuted(true);
++      try {
++        await video.play();
++      } catch (playErr) {
++        console.warn("Autoplay blocked:", playErr);
++        setIsPlaying(false);
+       }
+     }
+-  }, [volume]);
++  };
++
++  useEffect(() => {
++    ensurePlayback();
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, [currentVideo, isMuted, isPlaying, volume]);
+ 
+-  const togglePlay = () => {
++  const togglePlay = async () => {
+     const video = videoRef.current;
+     if (!video) return;
++
+     if (video.paused) {
+-      video.play();
+-      setIsPlaying(true);
+-    } else {
+-      video.pause();
+-      setIsPlaying(false);
++      try {
++        await video.play();
++        setIsPlaying(true);
++      } catch (err) {
++        console.warn("Play blocked:", err);
++      }
++      return;
+     }
++
++    video.pause();
++    setIsPlaying(false);
+   };
+-  
+ 
+   const toggleMute = () => {
+-    if (!videoRef.current) return;
+-    const newMuted = !videoRef.current.muted;
+-    videoRef.current.muted = newMuted;
+-    setIsMuted(newMuted);
+-    if (!newMuted && volume === 0) setVolume(50); // restore volume if needed
++    const video = videoRef.current;
++    if (!video) return;
++
++    const nextMuted = !isMuted;
++    setIsMuted(nextMuted);
++
++    if (!nextMuted && volume === 0) {
++      setVolume(40);
++      video.volume = 0.4;
++    }
++
++    video.muted = nextMuted;
+   };
+ 
+   const handleVolumeChange = (e) => {
+-    const newVolume = parseInt(e.target.value, 10);
+-    setVolume(newVolume);
+-    if (videoRef.current) {
+-      videoRef.current.volume = newVolume / 100;
+-      videoRef.current.muted = newVolume === 0;
+-      setIsMuted(newVolume === 0);
+-    }
++    const nextVolume = Number(e.target.value);
++    setVolume(nextVolume);
++
++    const video = videoRef.current;
++    if (!video) return;
++
++    video.volume = nextVolume / 100;
++    const shouldMute = nextVolume === 0;
++    video.muted = shouldMute;
++    setIsMuted(shouldMute);
+   };
+ 
+   const handleVideoEnded = () => {
+-    setCurrentVideo((prev) => (prev + 1) % videos.length);
++    setCurrentVideo((prev) => (prev + 1) % playlist.length);
+   };
+ 
+-
++  const handleLoadedData = () => {
++    ensurePlayback();
++  };
+ 
+   return (
+     <section className="hero-section-container">
+       <video
++        key={activeVideo.src}
+         ref={videoRef}
+-        className="background-video fade-video"
++        className="background-video"
+         autoPlay
+         playsInline
+         muted={isMuted}
++        preload="auto"
++        onLoadedData={handleLoadedData}
+         onEnded={handleVideoEnded}
+       >
+-        <source src={videos[currentVideo]} type="video/mp4" />
++        <source src={activeVideo.src} type="video/mp4" />
+       </video>
+ 
+       <div className="overlay-dark-sides" />
+ 
+       <div className="hero-centered-content">
+         <div className="hero-content-box text-white text-center px-3">
+-          <h1 className="display-4 fw-bold">Welcome to My Blog</h1>
+-          <p className="lead">Latest news and stories from around the world</p>
++          <span className="hero-kicker">Main Home Experience</span>
++          <h1 className="display-5 fw-bold mb-2">{activeVideo.title}</h1>
++          <p className="lead mb-1">{activeVideo.subtitle}</p>
++          <p className="hero-subtitle mb-0">Two videos now play back-to-back automatically.</p>
+         </div>
+       </div>
+ 
+-      <div className="hero-controls">
+-        <button className="control-btn" onClick={togglePlay}>
++      <div className="hero-controls" aria-label="Hero video controls">
++        <button className="control-btn" onClick={togglePlay} aria-label={isPlaying ? "Pause video" : "Play video"}>
+           {isPlaying ? <FaPause /> : <FaPlay />}
+         </button>
+-        <button className="control-btn" onClick={toggleMute}>
++        <button className="control-btn" onClick={toggleMute} aria-label={isMuted ? "Unmute video" : "Mute video"}>
+           {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+         </button>
+         <input
+@@ -118,8 +151,21 @@ export default function HeroVideoBackground() {
+           max="100"
+           value={volume}
+           onChange={handleVolumeChange}
++          aria-label="Video volume"
+         />
+       </div>
++
++      <div className="hero-pagination" aria-label="Video sequence indicator">
++        {playlist.map((video, index) => (
++          <button
++            key={video.src}
++            type="button"
++            className={`hero-dot ${index === currentVideo ? "active" : ""}`}
++            onClick={() => setCurrentVideo(index)}
++            aria-label={`Play clip ${index + 1}`}
++          />
++        ))}
++      </div>
+     </section>
+   );
+ }
+diff --git a/src/components/homemain/RoutePreviewPlan.css b/src/components/homemain/RoutePreviewPlan.css
+new file mode 100644
+index 0000000..893368b
+--- /dev/null
++++ b/src/components/homemain/RoutePreviewPlan.css
+@@ -0,0 +1,83 @@
++.route-preview-wrapper {
++  margin: 1.5rem 0 2rem;
++  padding: 1.2rem;
++  border-radius: 1rem;
++  background: linear-gradient(160deg, #f8fafc 0%, #eef2ff 100%);
++  border: 1px solid #dbeafe;
++}
++
++.route-preview-heading h2 {
++  margin: 0.2rem 0 0.5rem;
++  font-size: clamp(1.2rem, 2vw, 1.8rem);
++}
++
++.route-preview-heading p {
++  color: #334155;
++}
++
++.route-preview-kicker {
++  margin: 0;
++  display: inline-block;
++  font-size: 0.75rem;
++  color: #1d4ed8;
++  background: #dbeafe;
++  border-radius: 999px;
++  padding: 0.2rem 0.6rem;
++}
++
++.route-preview-grid {
++  margin-top: 1rem;
++  display: grid;
++  grid-template-columns: repeat(3, minmax(0, 1fr));
++  gap: 0.9rem;
++}
++
++.route-preview-card {
++  background: #ffffff;
++  border: 1px solid #e2e8f0;
++  border-radius: 0.85rem;
++  padding: 0.9rem;
++}
++
++.route-status {
++  display: inline-block;
++  font-size: 0.72rem;
++  color: #0369a1;
++  background: #e0f2fe;
++  border-radius: 999px;
++  padding: 0.2rem 0.5rem;
++}
++
++.route-path {
++  margin-bottom: 0.4rem;
++  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
++  color: #0f172a;
++}
++
++.route-preview-link {
++  display: inline-block;
++  margin-top: 0.45rem;
++  color: #1d4ed8;
++  text-decoration: none;
++  font-weight: 600;
++}
++
++.route-preview-link:hover {
++  text-decoration: underline;
++}
++
++@media (max-width: 991px) {
++  .route-preview-grid {
++    grid-template-columns: repeat(2, minmax(0, 1fr));
++  }
++}
++
++@media (max-width: 640px) {
++  .route-preview-wrapper {
++    padding: 0.9rem;
++  }
++
++  .route-preview-grid {
++    grid-template-columns: 1fr;
++  }
++}
+diff --git a/src/components/homemain/RoutePreviewPlan.jsx b/src/components/homemain/RoutePreviewPlan.jsx
+new file mode 100644
+index 0000000..b8ddb9d
+--- /dev/null
++++ b/src/components/homemain/RoutePreviewPlan.jsx
+@@ -0,0 +1,83 @@
++import React from "react";
++import { Link } from "react-router-dom";
++import "./RoutePreviewPlan.css";
++
++const plannedRoutes = [
++  {
++    title: "Main Home",
++    path: "/",
++    status: "Enhanced",
++    description: "Video-first landing with responsive sections and faster content discovery.",
++  },
++  {
++    title: "Home News",
++    path: "/home-news",
++    status: "Refresh Planned",
++    description: "Cleaner headline hierarchy and easier scrolling for mobile readers.",
++  },
++  {
++    title: "All Blog Posts",
++    path: "/blog-posts",
++    status: "Improvement Planned",
++    description: "Smarter filters, stronger empty-state UX, and consistent cards/list behavior.",
++  },
++  {
++    title: "Notes App",
++    path: "/apps/notes",
++    status: "Refinement Planned",
++    description: "Faster note finding, better toolbar density, and touch-friendly controls.",
++  },
++  {
++    title: "Todos App",
++    path: "/apps/todosapp",
++    status: "Refinement Planned",
++    description: "Simplified task capture, better date views, and cleaner project navigation.",
++  },
++  {
++    title: "App Tour",
++    path: "/app-tour",
++    status: "New",
++    description: "Guided full-webapp route tour with actionable checklists.",
++  },
++  {
++    title: "Playbook",
++    path: "/playbook",
++    status: "New",
++    description: "Single-page onboarding guide with admin demo scenarios and portfolio tips.",
++  },
++  {
++    title: "Task Board",
++    path: "/apps/taskboard",
++    status: "Refinement Planned",
++    description: "More visual status tracking and improved workload summaries.",
++  },
++];
++
++export default function RoutePreviewPlan() {
++  return (
++    <section className="route-preview-wrapper">
++      <div className="route-preview-heading">
++        <p className="route-preview-kicker">Landing/UI Plan Preview</p>
++        <h2>Planned Page & Route Experience</h2>
++        <p>
++          These route cards preview the next UI direction: clearer information hierarchy, faster actions,
++          and stronger mobile responsiveness.
++        </p>
++      </div>
++
++      <div className="route-preview-grid">
++        {plannedRoutes.map((route) => (
++          <article key={route.path} className="route-preview-card">
++            <span className="route-status">{route.status}</span>
++            <h3>{route.title}</h3>
++            <p className="route-path">{route.path}</p>
++            <p>{route.description}</p>
++            <Link to={route.path} className="route-preview-link">
++              Open route
++            </Link>
++          </article>
++        ))}
++      </div>
++    </section>
++  );
++}
+diff --git a/src/data/adminDemoExamples.js b/src/data/adminDemoExamples.js
+new file mode 100644
+index 0000000..79bfbab
+--- /dev/null
++++ b/src/data/adminDemoExamples.js
+@@ -0,0 +1,114 @@
++export const appUsageTracks = [
++  {
++    id: "blog-cms",
++    title: "Blog & Content Publishing",
++    route: "/add-blog-post",
++    goal: "Publish expert content consistently and repurpose it across formats.",
++    workflow: [
++      "Create a post with title, category/subcategory, tags, hashtags, and segment metadata.",
++      "Upload multiple images, mark a primary image, then add optional audio/video.",
++      "Use preview mode before publishing and confirm metadata in All Blog Posts.",
++    ],
++    portfolioWin: "Shows CMS thinking, editorial workflow, metadata strategy, and media publishing.",
++  },
++  {
++    id: "notes-knowledge",
++    title: "Notes Knowledge Base",
++    route: "/apps/notes",
++    goal: "Capture ideas, share reusable notes, and build a categorized knowledge hub.",
++    workflow: [
++      "Create personal notes by category type and rich blocks (headers, lists, embeds, images).",
++      "Share notes with other users or publish public notes.",
++      "Filter by own/shared/public to quickly retrieve information.",
++    ],
++    portfolioWin: "Demonstrates collaboration workflows and structured knowledge management.",
++  },
++  {
++    id: "todos-execution",
++    title: "Todos & Execution",
++    route: "/apps/todosapp",
++    goal: "Turn plans into tasks with project/category organization.",
++    workflow: [
++      "Create categories and projects for work streams.",
++      "Add todos with due dates and move between today/week/project views.",
++      "Track progress from quick-add and modal editors.",
++    ],
++    portfolioWin: "Shows practical productivity UX with filtering and operational control.",
++  },
++  {
++    id: "taskboard-team",
++    title: "Team Task Board",
++    route: "/apps/taskboard",
++    goal: "Manage assigned tasks and stage-based execution.",
++    workflow: [
++      "Assign tasks from admin flows and maintain stage (todo/in progress/completed).",
++      "Review user-level dashboard metrics and task table summaries.",
++      "Use stage filters to focus on pending blockers.",
++    ],
++    portfolioWin: "Highlights role-based collaboration and dashboard reporting.",
++  },
++  {
++    id: "pdf-library",
++    title: "PDF Library",
++    route: "/upload-pdf",
++    goal: "Build a searchable document library for guides or resources.",
++    workflow: [
++      "Upload PDF with title and store in Firebase Storage + Firestore metadata.",
++      "Open viewer route and share knowledge material with users.",
++      "Use for ebooks, policies, onboarding docs, or learning packs.",
++    ],
++    portfolioWin: "Demonstrates file workflow and content distribution patterns.",
++  },
++  {
++    id: "creative-tools",
++    title: "Creative Tools (AI Drafts + Banner Editor)",
++    route: "/dashboard/post-creator",
++    goal: "Speed up social content production and campaign design.",
++    workflow: [
++      "Generate caption drafts from topic ideas and save to ai-posts.",
++      "Use Banner Editor to produce shareable visual creatives.",
++      "Publish final outputs through your blog + social channels.",
++    ],
++    portfolioWin: "Shows end-to-end content pipeline from idea to visual distribution.",
++  },
++];
++
++export const adminDemoScenario = {
++  profile: {
++    role: "admin",
++    displayName: "Portfolio Admin",
++    objective: "Run a complete 1-day content and productivity demonstration.",
++  },
++  timeline: [
++    {
++      time: "09:00",
++      action: "Publish blog post: '5 Productivity Habits for Developers'.",
++      apps: ["Blog CMS", "AI Drafts"],
++      output: "One long-form article + 2 social captions + 1 banner visual.",
++    },
++    {
++      time: "10:30",
++      action: "Capture meeting learnings in Notes and share to team.",
++      apps: ["Notes"],
++      output: "Public summary note + 3 private action notes.",
++    },
++    {
++      time: "12:00",
++      action: "Break tasks into category/project-based todos.",
++      apps: ["Todos"],
++      output: "Prioritized today/week task list.",
++    },
++    {
++      time: "14:00",
++      action: "Assign tasks and monitor progress in Task Board.",
++      apps: ["Task Board"],
++      output: "Clear stage view across todo/in-progress/completed.",
++    },
++    {
++      time: "16:00",
++      action: "Upload PDF playbook for user onboarding.",
++      apps: ["PDF Library"],
++      output: "One accessible onboarding resource for all users.",
++    },
++  ],
++};
+diff --git a/src/index.css b/src/index.css
+index e69de29..b78c308 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -0,0 +1,67 @@
++:root {
++  --app-bg: #f8fafc;
++  --text-main: #0f172a;
++  --primary: #2563eb;
++}
++
++* {
++  box-sizing: border-box;
++}
++
++body {
++  margin: 0;
++  background: var(--app-bg);
++  color: var(--text-main);
++  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
++}
++
++a {
++  color: inherit;
++}
++
++.container,
++.container-fluid {
++  width: 100%;
++}
++
++.card,
++.table,
++.list-group-item,
++.modal-content {
++  border-radius: 0.8rem;
++}
++
++.btn-primary {
++  background: var(--primary);
++  border-color: var(--primary);
++}
++
++.floating-guide-btn {
++  position: fixed;
++  right: 1rem;
++  bottom: 1rem;
++  z-index: 1080;
++  text-decoration: none;
++  background: #0f172a;
++  color: #fff;
++  border: 1px solid rgba(255, 255, 255, 0.2);
++  padding: 0.55rem 0.85rem;
++  border-radius: 999px;
++  box-shadow: 0 10px 20px rgba(2, 6, 23, 0.35);
++  font-size: 0.88rem;
++  font-weight: 600;
++}
++
++.floating-guide-btn:hover {
++  color: #fff;
++  background: #1e293b;
++}
++
++@media (max-width: 768px) {
++  .floating-guide-btn {
++    right: 0.75rem;
++    bottom: 0.75rem;
++    padding: 0.5rem 0.75rem;
++    font-size: 0.8rem;
++  }
++}
+diff --git a/src/pages/guide/AppDemoTour.css b/src/pages/guide/AppDemoTour.css
+new file mode 100644
+index 0000000..d01ffe6
+--- /dev/null
++++ b/src/pages/guide/AppDemoTour.css
+@@ -0,0 +1,37 @@
++.tour-page {
++  max-width: 1200px;
++}
++
++.tour-header {
++  background: linear-gradient(135deg, #111827, #2563eb);
++  color: #fff;
++  border-radius: 1rem;
++  padding: 1.2rem;
++}
++
++.tour-chip {
++  display: inline-block;
++  padding: 0.2rem 0.65rem;
++  border-radius: 999px;
++  background: rgba(255, 255, 255, 0.22);
++  font-size: 0.75rem;
++}
++
++.tour-card {
++  background: #ffffff;
++  border: 1px solid #e2e8f0;
++  border-radius: 0.9rem;
++  padding: 1rem;
++  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
++}
++
++.tour-card h2 {
++  font-size: 1.05rem;
++  margin-bottom: 0.4rem;
++}
++
++.tour-route {
++  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
++  color: #334155;
++  font-size: 0.82rem;
++}
+diff --git a/src/pages/guide/AppDemoTour.jsx b/src/pages/guide/AppDemoTour.jsx
+new file mode 100644
+index 0000000..b78e169
+--- /dev/null
++++ b/src/pages/guide/AppDemoTour.jsx
+@@ -0,0 +1,89 @@
++import React from "react";
++import { Link } from "react-router-dom";
++import "./AppDemoTour.css";
++
++const tourSteps = [
++  {
++    title: "Step 1 — Start at Main Home",
++    route: "/",
++    description: "Use the home sections to discover content, trends, and the most important modules quickly.",
++    checklist: ["Scan featured + trending", "Open Playbook", "Use search/category filters"],
++  },
++  {
++    title: "Step 2 — Publish Content (Admin)",
++    route: "/add-blog-post",
++    description: "Create a complete blog post with media, tags, metadata, and preview before publish.",
++    checklist: ["Add title/description", "Upload media", "Set category + tags", "Publish"],
++  },
++  {
++    title: "Step 3 — Capture Knowledge",
++    route: "/apps/notes",
++    description: "Store ideas and reusable knowledge in structured notes and share with team/users.",
++    checklist: ["Create note", "Assign category", "Share/public note"],
++  },
++  {
++    title: "Step 4 — Plan Execution",
++    route: "/apps/todosapp",
++    description: "Convert goals to todo tasks, group by category/project, and execute by today/week views.",
++    checklist: ["Create category", "Create project", "Add todos", "Track completion"],
++  },
++  {
++    title: "Step 5 — Monitor Delivery",
++    route: "/apps/taskboard",
++    description: "Track assignments by stage and quickly detect blocked or overdue work.",
++    checklist: ["Review stats", "Filter by stage", "Update status"],
++  },
++  {
++    title: "Step 6 — Share Resources",
++    route: "/upload-pdf",
++    description: "Upload guides/pdfs to build a reusable knowledge/resource center for users.",
++    checklist: ["Upload PDF", "Verify viewer", "Share route"],
++  },
++];
++
++export default function AppDemoTour() {
++  return (
++    <div className="tour-page container py-4">
++      <header className="tour-header mb-4">
++        <p className="tour-chip">Guided Demo Tour</p>
++        <h1>Use the Full Webapp Without Mixing Things Up</h1>
++        <p>
++          Follow this route-by-route flow to get the best value from every app module in one consistent
++          working pattern.
++        </p>
++      </header>
++
++      <section className="row g-3">
++        {tourSteps.map((step, index) => (
++          <div className="col-lg-6" key={step.title}>
++            <article className="tour-card h-100">
++              <div className="d-flex align-items-center justify-content-between gap-2">
++                <h2>{index + 1}. {step.title}</h2>
++                <Link to={step.route} className="btn btn-sm btn-outline-primary">Open</Link>
++              </div>
++              <p className="tour-route">Route: {step.route}</p>
++              <p>{step.description}</p>
++              <ul>
++                {step.checklist.map((item) => (
++                  <li key={item}>{item}</li>
++                ))}
++              </ul>
++            </article>
++          </div>
++        ))}
++      </section>
++
++      <section className="tour-footer mt-4">
++        <article className="tour-card">
++          <h2>Fast Navigation</h2>
++          <div className="d-flex flex-wrap gap-2">
++            <Link className="btn btn-primary btn-sm" to="/playbook">Open Playbook</Link>
++            <Link className="btn btn-outline-primary btn-sm" to="/dashboard/admin">Open Admin</Link>
++            <Link className="btn btn-outline-secondary btn-sm" to="/all-blogs">Open Blogs</Link>
++            <Link className="btn btn-outline-secondary btn-sm" to="/">Main Home</Link>
++          </div>
++        </article>
++      </section>
++    </div>
++  );
++}
+diff --git a/src/pages/guide/ProductivityPlaybook.css b/src/pages/guide/ProductivityPlaybook.css
+new file mode 100644
+index 0000000..b125eff
+--- /dev/null
++++ b/src/pages/guide/ProductivityPlaybook.css
+@@ -0,0 +1,49 @@
++.playbook-page {
++  max-width: 1200px;
++}
++
++.playbook-hero {
++  background: linear-gradient(140deg, #0f172a, #1d4ed8);
++  color: #fff;
++  border-radius: 1rem;
++  padding: 1.25rem;
++}
++
++.playbook-badge {
++  display: inline-block;
++  margin-bottom: 0.5rem;
++  padding: 0.2rem 0.65rem;
++  border-radius: 999px;
++  background: rgba(255, 255, 255, 0.2);
++  font-size: 0.78rem;
++}
++
++.plan-card,
++.demo-card {
++  border: 1px solid #e2e8f0;
++  border-radius: 0.9rem;
++  padding: 1rem;
++  background: #fff;
++}
++
++.demo-card h3,
++.plan-card h3 {
++  font-size: 1.05rem;
++}
++
++.goal,
++.portfolio {
++  color: #334155;
++}
++
++.open-link {
++  text-decoration: none;
++  font-size: 0.85rem;
++  font-weight: 600;
++}
++
++@media (max-width: 768px) {
++  .playbook-hero {
++    padding: 1rem;
++  }
++}
+diff --git a/src/pages/guide/ProductivityPlaybook.jsx b/src/pages/guide/ProductivityPlaybook.jsx
+new file mode 100644
+index 0000000..1cbebc9
+--- /dev/null
++++ b/src/pages/guide/ProductivityPlaybook.jsx
+@@ -0,0 +1,119 @@
++import React from "react";
++import { Link } from "react-router-dom";
++import { adminDemoScenario, appUsageTracks } from "../../data/adminDemoExamples";
++import "./ProductivityPlaybook.css";
++
++export default function ProductivityPlaybook() {
++  return (
++    <div className="playbook-page container py-4">
++      <header className="playbook-hero mb-4">
++        <p className="playbook-badge">Easy-Use Master Plan</p>
++        <h1>How to Use This Webapp Without Getting Overwhelmed</h1>
++        <p>
++          Use this as your single source of truth for onboarding, demoing features, and showcasing
++          portfolio-ready outcomes to employers and clients.
++        </p>
++      </header>
++
++      <section className="mb-4">
++        <h2>1) Simple way to use the platform</h2>
++        <div className="row g-3">
++          <div className="col-md-4">
++            <article className="plan-card h-100">
++              <h3>Phase A: Publish</h3>
++              <p>Use Blog + AI + Banner tools to create your weekly content assets first.</p>
++            </article>
++          </div>
++          <div className="col-md-4">
++            <article className="plan-card h-100">
++              <h3>Phase B: Organize</h3>
++              <p>Move key ideas to Notes and convert actions into Todos + Taskboard tickets.</p>
++            </article>
++          </div>
++          <div className="col-md-4">
++            <article className="plan-card h-100">
++              <h3>Phase C: Scale</h3>
++              <p>Upload PDFs/checklists for repeat onboarding and team handoff.</p>
++            </article>
++          </div>
++        </div>
++      </section>
++
++      <section className="mb-4">
++        <h2>2) App-by-app demo examples (Admin)</h2>
++        <div className="row g-3">
++          {appUsageTracks.map((track) => (
++            <div className="col-lg-6" key={track.id}>
++              <article className="demo-card h-100">
++                <div className="d-flex justify-content-between align-items-start gap-2">
++                  <h3>{track.title}</h3>
++                  <Link to={track.route} className="open-link">
++                    Open
++                  </Link>
++                </div>
++                <p className="goal"><strong>Goal:</strong> {track.goal}</p>
++                <ul>
++                  {track.workflow.map((step) => (
++                    <li key={step}>{step}</li>
++                  ))}
++                </ul>
++                <p className="portfolio"><strong>Portfolio value:</strong> {track.portfolioWin}</p>
++              </article>
++            </div>
++          ))}
++        </div>
++      </section>
++
++      <section className="mb-4">
++        <h2>3) One-day admin walkthrough demo</h2>
++        <article className="plan-card">
++          <p>
++            <strong>Profile:</strong> {adminDemoScenario.profile.displayName} ({adminDemoScenario.profile.role})
++          </p>
++          <p>
++            <strong>Objective:</strong> {adminDemoScenario.profile.objective}
++          </p>
++          <div className="table-responsive">
++            <table className="table table-striped align-middle">
++              <thead>
++                <tr>
++                  <th>Time</th>
++                  <th>Action</th>
++                  <th>Apps</th>
++                  <th>Output</th>
++                </tr>
++              </thead>
++              <tbody>
++                {adminDemoScenario.timeline.map((item) => (
++                  <tr key={item.time}>
++                    <td>{item.time}</td>
++                    <td>{item.action}</td>
++                    <td>{item.apps.join(", ")}</td>
++                    <td>{item.output}</td>
++                  </tr>
++                ))}
++              </tbody>
++            </table>
++          </div>
++        </article>
++      </section>
++
++      <section>
++        <h2>4) Portfolio positioning tips</h2>
++        <article className="plan-card">
++          <ul className="mb-2">
++            <li>Demo end-to-end workflow: idea → content → planning → team execution.</li>
++            <li>Show role-based flows (admin creation + user consumption).</li>
++            <li>Use screenshots/video clips from each app area to present real product depth.</li>
++            <li>Highlight Firebase integration: auth, data, media, and real-time updates.</li>
++          </ul>
++          <div className="d-flex flex-wrap gap-2">
++            <Link to="/" className="btn btn-primary btn-sm">Back to Main Home</Link>
++            <Link to="/dashboard/admin" className="btn btn-outline-primary btn-sm">Open Admin</Link>
++            <Link to="/all-blogs" className="btn btn-outline-secondary btn-sm">Open Blogs</Link>
++          </div>
++        </article>
++      </section>
++    </div>
++  );
++}
+diff --git a/src/pages/homemain/HomeMain.css b/src/pages/homemain/HomeMain.css
+new file mode 100644
+index 0000000..a35d3e7
+--- /dev/null
++++ b/src/pages/homemain/HomeMain.css
+@@ -0,0 +1,19 @@
++.home-main-shell {
++  max-width: 1440px;
++}
++
++.content-block {
++  margin-bottom: 1.25rem;
++  border-radius: 1rem;
++}
++
++@media (max-width: 768px) {
++  .home-main-shell {
++    padding-left: 0.6rem;
++    padding-right: 0.6rem;
++  }
++
++  .content-block {
++    margin-bottom: 0.9rem;
++  }
++}
+diff --git a/src/pages/homemain/HomeMain.jsx b/src/pages/homemain/HomeMain.jsx
+index 107c53b..3e0f978 100644
+--- a/src/pages/homemain/HomeMain.jsx
++++ b/src/pages/homemain/HomeMain.jsx
+@@ -28,6 +28,8 @@ import NavbarHome from "../../components/homemain/NavbarHome";
+ import BlogsList from "../../components/homemain/BlogsList";
+ import { toast } from "react-toastify";
+ import HeroVideoBackground from "../../components/homemain/HeroVideoBackground";
++import RoutePreviewPlan from "../../components/homemain/RoutePreviewPlan";
++import "./HomeMain.css";
+ 
+ function useQuery() {
+   return new URLSearchParams(useLocation().search);
+@@ -278,10 +280,20 @@ export default function HomeMain({ setActive, user, active, handleLogout, role }
+       {/*<HeroSection />*/}
+       <HeroVideoBackground />
+ 
+-      <div className="container-fluid my-4">
+-        <FeaturedPostSlider />
+-        <TwoSidePosts />
+-        <TrendingSlider blogs={trendBlogs} />
++      <div className="container-fluid my-4 home-main-shell">
++        <RoutePreviewPlan />
++
++        <section className="content-block">
++          <FeaturedPostSlider />
++        </section>
++
++        <section className="content-block">
++          <TwoSidePosts />
++        </section>
++
++        <section className="content-block">
++          <TrendingSlider blogs={trendBlogs} />
++        </section>
+ 
+         <div className="row mt-4" style={{ minHeight: "180vh" }}>
+           <div>

@@ -1,0 +1,49 @@
+.playbook-page {
+  max-width: 1200px;
+}
+
+.playbook-hero {
+  background: linear-gradient(140deg, #0f172a, #1d4ed8);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.playbook-badge {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.78rem;
+}
+
+.plan-card,
+.demo-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.9rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.demo-card h3,
+.plan-card h3 {
+  font-size: 1.05rem;
+}
+
+.goal,
+.portfolio {
+  color: #334155;
+}
+
+.open-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .playbook-hero {
+    padding: 1rem;
+  }
+}
